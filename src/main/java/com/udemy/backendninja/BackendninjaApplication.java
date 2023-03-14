@@ -8,7 +8,7 @@ public class BackendninjaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendninjaApplication.class, args);
-            System.out.println("hi ale");
+            System.out.println("hi ale in github");
 	}
 
 }
