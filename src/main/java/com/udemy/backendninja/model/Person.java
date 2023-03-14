@@ -1,9 +1,6 @@
 package com.udemy.backendninja.model;
 
-/**
- *
- * @author ALE
- */
+/** @author ALE */
 public class Person {
 
     String name;
