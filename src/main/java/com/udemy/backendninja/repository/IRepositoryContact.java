@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository("iRepositoryContact")
 public interface IRepositoryContact extends JpaRepository<Contact, Serializable> {//<tipo_de_entidad, tipo_de_id>
 
+     
 }

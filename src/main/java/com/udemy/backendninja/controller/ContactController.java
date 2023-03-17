@@ -8,6 +8,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * @author ALE
  */
+//Esto se puede añadir a nivel de metodo o a nivel de clase
+//@PreAuthorize("hasRole('ROLE_USER')")
 @Controller
 @RequestMapping("/contacts")
 public class ContactController {
@@ -38,6 +43,8 @@ public class ContactController {
         return "redirect:/contacts/showcontact";
     }
 
+    //Esto se puede añadir a nivel de metodo o a nivel de clase
+//    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/contactForm")
     public String redirectContactoForm(@RequestParam(name = "id", required = false) int id, Model model) {
         LOG.info("METHOD: redirectContactForm()");
@@ -52,6 +59,10 @@ public class ContactController {
     @GetMapping("showcontact")
     public ModelAndView showContact(Model model) {
         ModelAndView mav = new ModelAndView(ViewConstant.CONTACTS);
+      
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        mav.addObject("username", user.getUsername());
+        
         mav.addObject("contacts", iServiceContact.list());
         return mav;
     }
