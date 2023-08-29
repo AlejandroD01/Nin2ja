@@ -1,8 +1,14 @@
-# Nin2ja
+ Nin2ja
 
-#Tecnologias utilizadas
-#spring boot
+ Tecnologias utilizadas:
+#java 8
+#spring boot 2.7.9
+#Spring Scurity
 #thymeleaf
 #jpa
 #Hibernate
 #postgresql
+
+#thymeleaf
+#css
+#html
